@@ -1,0 +1,70 @@
+:root {
+  --rotate-to-right: 2.5deg;
+  --rotate-to-left: -2.5deg;
+  --perspective-3d-value: 25px;
+}
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards-container {
+  display: flex;
+  gap: 0 0.1rem;
+  width: 70vw;
+  .card-content {
+    flex: 1;
+    border-radius: 3%;
+    transition: scale 0.2s 0s linear, transform 0.2s 0s linear;
+    box-shadow: -9px 3px 37px 1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -9px 3px 37px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -9px 3px 37px 1px rgba(0, 0, 0, 0.75);
+    > img {
+      width: 100%;
+      height: 100%;
+      border-radius: 3%;
+      object-fit: cover;
+      transition: filter 0.4s;
+    }
+  }
+}
+
+.card-content:is(:hover) {
+  scale: 1.4;
+  z-index: 666;
+}
+.cards-container:is(:hover) {
+  gap: 0rem;
+}
+
+.cards-container:has(.card-content:nth-of-type(3n):is(:hover))
+  > .card-content:nth-of-type(-n + 3):not(:hover) {
+  transform: perspective(var(--perspective-3d-value))
+    rotateY(var(--rotate-to-right));
+  img {
+    filter: grayscale(1);
+  }
+}
+
+.cards-container:has(.card-content:nth-of-type(n + 3):is(:hover))
+  > .card-content:not(:hover) {
+  transform: perspective(var(--perspective-3d-value))
+    rotateY(var(--rotate-to-right));
+  img {
+    filter: grayscale(1);
+  }
+}
+.cards-container:has(.card-content:nth-of-type(-n + 3):is(:hover))
+  > .card-content:not(:hover) {
+  transform: perspective(var(--perspective-3d-value))
+    rotateY(var(--rotate-to-left));
+  img {
+    filter: grayscale(1);
+  }
+}
