@@ -22,9 +22,6 @@ body {
     flex: 1;
     border-radius: 3%;
     transition: scale 0.2s 0s linear, transform 0.2s 0s linear;
-    box-shadow: -9px 3px 37px 1px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: -9px 3px 37px 1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -9px 3px 37px 1px rgba(0, 0, 0, 0.75);
     > img {
       width: 100%;
       height: 100%;
@@ -38,6 +35,7 @@ body {
 .card-content:is(:hover) {
   scale: 1.4;
   z-index: 666;
+  -webkit-box-shadow: -2px 7px 13px -6px rgba(0, 0, 0, 0.75);
 }
 .cards-container:is(:hover) {
   gap: 0rem;
